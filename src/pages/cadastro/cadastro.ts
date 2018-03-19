@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Jogo } from './../../models/jogo';
+import { NavParams, NavController } from 'ionic-angular';
 
 @Component({
     selector: 'cadastro-page',
@@ -9,11 +10,27 @@ import { Jogo } from './../../models/jogo';
 export class Cadastro {
 
     public jogo: Jogo;
+    public onCallback: Function;
 
-    constructor() {
+    constructor(public navParams: NavParams,
+                public navCtrl: NavController) {
         
-        this.jogo = new Jogo();
+        this.onCallback = this.navParams.get('callback');
+        this.jogo = this.navParams.get('jogo');
+        
+        // Verifica se veio o parametro jogo,
+        // Se veio, é porque, é uma alteração
+        if (this.jogo == null) {
+            this.jogo = new Jogo();
+        }
 
+    }
+
+    salvar(jogoSalvar: Jogo) {
+        console.log(jogoSalvar);
+
+        this.onCallback(jogoSalvar);
+        this.navCtrl.pop();
     }
 
 }

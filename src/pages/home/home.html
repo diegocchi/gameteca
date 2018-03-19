@@ -17,6 +17,10 @@
 
 <ion-content padding>
   
-  
+  <ion-list>
+    <ion-item *ngFor="let item of listaJogos" (click)="editar(item)">
+      <span>{{item.codigo}} - {{item.nome}}</span>
+    </ion-item>
+  </ion-list>
 
 </ion-content>
