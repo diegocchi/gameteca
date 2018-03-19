@@ -11,6 +11,7 @@ export class Cadastro {
 
     public jogo: Jogo;
     public onCallback: Function;
+    public edicao = false;
 
     constructor(public navParams: NavParams,
                 public navCtrl: NavController) {
@@ -22,6 +23,8 @@ export class Cadastro {
         // Se veio, é porque, é uma alteração
         if (this.jogo == null) {
             this.jogo = new Jogo();
+        } else {
+            this.edicao = true;
         }
 
     }
