@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+
 import { Cadastro } from '../cadastro/cadastro';
 import { Jogo } from '../../models/jogo';
 
@@ -12,8 +14,16 @@ export class HomePage {
   public listaJogos: Array<Jogo> = [];
 
   constructor(public navCtrl: NavController,
-              public alertCtrl: AlertController) {
+              public alertCtrl: AlertController,
+              public storage: Storage) {
 
+    this.storage.get('listaJogos').then(listaSalva => {
+      if (listaSalva != null) {
+        this.listaJogos = listaSalva;
+      }
+    }).catch(e => {
+      console.log(e);
+    });
   }
 
   abrirCadastro(item: Jogo) {
@@ -32,6 +42,8 @@ export class HomePage {
         }
       }
       if (!existe) me.listaJogos.push(jogo);
+
+      this.storage.set('listaJogos', this.listaJogos);
     }
 
     // Ao chamar a tela de Cadastro, é passada
@@ -41,6 +53,28 @@ export class HomePage {
 
   apagarItem(posicao: number) {
     this.listaJogos.splice(posicao, 1);
+    this.storage.set('listaJogos', this.listaJogos);
+  }
+
+  confirmarExclusao(posicao: number) {
+    let me = this;
+    let alerta = this.alertCtrl.create({
+      title: 'Confirmação',
+      message: 'Deseja mesmo deletar este item?',
+      buttons: [
+        {
+          text: 'Sim',
+          handler: () => {
+            me.apagarItem(posicao);
+          }
+        },
+        {
+          text: 'Não',
+          role: 'cancel'
+        }
+      ]
+    });
+    alerta.present();
   }
 
 }

@@ -19,13 +19,12 @@
   
   <ion-list>
     <ion-item-sliding 
-      *ngFor="let item of listaJogos; let i = index" 
-      (click)="abrirCadastro(item)">
-      <ion-item>
+      *ngFor="let item of listaJogos; let i = index">
+      <ion-item (click)="abrirCadastro(item)">
         <span>{{item.codigo}} - {{item.nome}}</span>
       </ion-item>
       <ion-item-options side="rigth">
-        <button ion-button (click)="apagarItem(i)">
+        <button ion-button (click)="confirmarExclusao(i)">
           <ion-icon name="trash"></ion-icon>
         </button>
       </ion-item-options>
