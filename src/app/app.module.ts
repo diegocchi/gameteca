@@ -1,3 +1,4 @@
+import { LoginPage } from './../pages/login/login';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -13,7 +14,8 @@ import { Cadastro } from '../pages/cadastro/cadastro';
   declarations: [
     MyApp,
     HomePage,
-    Cadastro
+    Cadastro,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,8 @@ import { Cadastro } from '../pages/cadastro/cadastro';
   entryComponents: [
     MyApp,
     HomePage,
-    Cadastro
+    Cadastro,
+    LoginPage
   ],
   providers: [
     StatusBar,
