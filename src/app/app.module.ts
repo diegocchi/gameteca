@@ -1,3 +1,4 @@
+import { HomePage } from './../pages/home/home';
 import { LoginPage } from './../pages/login/login';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -7,17 +8,20 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+import { ListaPage } from '../pages/lista/lista';
 import { Cadastro } from '../pages/cadastro/cadastro';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
+    ListaPage,
     Cadastro,
-    LoginPage
+    LoginPage,
+    HomePage
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
@@ -25,9 +29,10 @@ import { Cadastro } from '../pages/cadastro/cadastro';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
+    ListaPage,
     Cadastro,
-    LoginPage
+    LoginPage,
+    HomePage
   ],
   providers: [
     StatusBar,

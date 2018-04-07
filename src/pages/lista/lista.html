@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      GameTeca
+    </ion-title>
+
+    <!-- Coloca o botão no final da barra de titulo -->
+    <ion-buttons end>
+      <button ion-button icon-only (click)="abrirCadastro()">
+        <ion-icon name="add"></ion-icon>
+      </button>  
+    </ion-buttons>
+    
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item-sliding 
+      *ngFor="let item of listaJogos; let i = index">
+      <ion-item (click)="abrirCadastro(item)">
+        <span>{{item.codigo}} - {{item.nome}}</span>
+      </ion-item>
+      <ion-item-options side="rigth">
+        <button ion-button (click)="confirmarExclusao(i)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>

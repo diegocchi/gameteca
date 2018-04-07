@@ -9,22 +9,24 @@
     <!-- Usuário e Senha -->
     <ion-row>
       
-      <ion-list class="inputs">
-        <ion-item>
-          <ion-label floating>Usuário</ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>  
-        <ion-item>
-            <ion-label floating>Senha</ion-label>
-            <ion-input type="password"></ion-input>
-        </ion-item>
-      </ion-list>
+      <form [formGroup]="formLogin">
+        <ion-list class="inputs">
+          <ion-item [class.invalid]="!formLogin.controls.usuario.valid && (formLogin.controls.usuario.dirty || salvou)">
+            <ion-label floating>Usuário</ion-label>
+            <ion-input type="text" [(ngModel)]="usuario.login" formControlName="usuario"></ion-input>
+          </ion-item>  
+          <ion-item [class.invalid]="!formLogin.controls.senha.valid && (formLogin.controls.senha.dirty || salvou)">
+              <ion-label floating>Senha</ion-label>
+              <ion-input type="password" [(ngModel)]="usuario.senha" formControlName="senha"></ion-input>
+          </ion-item>
+        </ion-list>
+      </form>
       
     </ion-row>
 
     <!-- Botão Logar -->
     <ion-row>
-      <button ion-button block icon-start>
+      <button ion-button block icon-start (click)="logar(usuario)">
         <ion-icon name="log-in"></ion-icon>
         Logar
       </button>
@@ -32,7 +34,10 @@
 
     <!-- Botão Cadastrar -->
     <ion-row>
-      <button ion-button block>Cadastrar-se</button>
+      <button ion-button block icon-start>
+        <ion-icon name="person"></ion-icon>
+        Cadastrar-se
+      </button>
     </ion-row>
 
   </ion-grid>

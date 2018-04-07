@@ -5,4 +5,17 @@ page-login {
         margin-top: 10%;
     }
 
+    form {
+        width: 100%;
+    }
+
+    .invalid {
+        .item-inner {
+            border-bottom: 1px solid red !important;
+        }
+        .label {
+            color: red !important;
+        }
+    }
+
 }
